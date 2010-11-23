@@ -12,10 +12,11 @@ package cc.varga.utils.logger {
 	 */
 	public class LoggerSOS implements ILogger {
 		private static var socket : XMLSocket;
-		public var _classPath : String;
+		private var _classPath : String;
 		public static var CONNECT_TO_SOCKET : Boolean = false;
 		public static var enableTrace : Boolean = false;
-
+		public static var LOG_LEVEL : uint = 0;
+		
 		public function LoggerSOS(classPath : String = "") {
 			_classPath = classPath;
 			init();
@@ -79,7 +80,7 @@ package cc.varga.utils.logger {
 			output("TEMP", message);
 		}
 
-		protected function output(type : String, message : String, folding : Boolean = false, title : String = "HERE IS YOUR FUCKING TITLE") : void {
+		public function output(type : String, message : String, folding : Boolean = false, title : String = "HERE IS YOUR FUCKING TITLE", line : uint = 0, reaseon : String = "To lazy for a reason!!!") : void {
 			if(enableTrace == true) {
 				var output : String = "[" + getTimer() + "].[" + type + "].[" + _classPath + "] -> " + message;
 
@@ -98,8 +99,9 @@ package cc.varga.utils.logger {
 			}
 		}
 
-		public function set logLevel(value : uint) : void
+		public function set classPath(value : String) : void
 		{
+			_classPath = value;
 		}
 	}
 }
