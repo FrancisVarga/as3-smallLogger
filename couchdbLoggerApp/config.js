@@ -7,6 +7,7 @@
   "config.js": "",
   "templates": "_attachments/templates",
   "images": "_attachments/images",
+  "swf": "_attachments/swf",
   "db": "",
   "hooks": false,
   "js": "_attachments/js",
