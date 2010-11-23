@@ -18,6 +18,7 @@
  */
 package cc.varga.utils.logger
 {
+	import com.adobe.net.URI;
 	import cc.varga.couchdb.CouchDBClient;
 
 	import com.maccherone.json.JSON;
@@ -39,10 +40,11 @@ package cc.varga.utils.logger
 		private var _client : CouchDBClient;
 		private var _classPath : String;
 
-		public function LoggerCouchDB(classPath : String = "")
+		public function LoggerCouchDB(couchdbURL : String, classPath : String = "")
 		{
 			super(classPath);
 			_client = new CouchDBClient();
+			_client.couchdbURI = new URI(couchdbURL);
 		}
 
 		override public function output(type : String, message : String, folding : Boolean = false, title : String = "HERE IS YOUR FUCKING TITLE", line : uint = 0, reason : String = "To lazy for a reason!!!") : void
@@ -61,5 +63,7 @@ package cc.varga.utils.logger
 		{
 			super.classPath = value;
 		}
+		
+		
 	}
 }
